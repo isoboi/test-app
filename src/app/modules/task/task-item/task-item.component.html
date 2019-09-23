@@ -1,0 +1,32 @@
+<ng-template #loader>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+<div class="add-task" *ngIf="!showLoader; else loader">
+  <h1 class="lead title">{{task ? 'Изменить' : 'Добавить'}} задачу</h1>
+
+  <form class="mt-4" [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Название задачи</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Название задачи">
+    </div>
+
+    <div class="form-group">
+      <label for="desc">Описание задачи</label>
+      <input type="text" class="form-control" formControlName="description" id="desc" placeholder="Описание задачи">
+    </div>
+
+    <div class="form-group">
+      <label for="date">Дата завершения</label>
+      <input type="date" class="form-control" formControlName="date" id="date">
+    </div>
+
+    <button type="submit" class="btn btn-success mr-3" [disabled]="form.invalid">{{task ? 'Изменить' : 'Добавить'}}</button>
+    <button type="button" class="btn btn-warning" routerLink="/tasks">Отмена</button>
+  </form>
+</div>
+

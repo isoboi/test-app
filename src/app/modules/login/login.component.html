@@ -1,0 +1,43 @@
+<div class="login-form h-100 d-flex justify-content-center align-items-center container">
+  <div class="login-form__container card p-3">
+    <h1 class="display-4 text-center mb-4">Вход</h1>
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="login">Логин</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-key" aria-hidden="true"></i>
+            </div>
+          </div>
+          <input type="text" class="form-control" id="login" autocomplete="off"
+                 placeholder="Введите логин" formControlName="login">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Пароль</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-key" aria-hidden="true"></i>
+            </div>
+        </div>
+          <input type="{{showPassword ? 'text' : 'password'}}" class="form-control" id="exampleInputPassword1"
+                 autocomplete="off" placeholder="Введите пароль" formControlName="password">
+          <div class="input-group-append" (click)="showPassword = !showPassword">
+            <div class="input-group-text">
+              <i class="fa" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <small class="text-danger" *ngIf="error">Вы ввели не правильный логин или пароль</small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-5" [disabled]="form.invalid">
+        <span class="spinner-border text-light mr-2" role="status" *ngIf="spinnerShow">
+          <span class="sr-only">Loading...</span>
+        </span>
+        <span>Вход</span>
+      </button>
+    </form>
+  </div>
+</div>

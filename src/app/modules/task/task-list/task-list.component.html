@@ -1,0 +1,30 @@
+<div class="tasks">
+  <h1 class="lead title">Список задач</h1>
+
+  <div class="row col-12 mt-5">
+    <button class="btn btn-success d-flex align-items-center" routerLink="new">
+      <i class="fa fa-plus mr-2"></i>
+      <span>Добавить задачу</span>
+    </button>
+  </div>
+  <div class="task-list py-3">
+    <div class="row" *ngIf="tasks | async; else loader">
+      <div class="col-md-4 task-item" *ngFor="let task of tasks | async">
+        <div class="card mb-4 shadow-sm" [routerLink]="[task.id]">
+          <div class="card-body">
+            <p class="card-text">{{task.name}}</p>
+            <small class="text-muted">{{task.date}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loader>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
