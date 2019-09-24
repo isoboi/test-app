@@ -6,6 +6,8 @@ import { APP_ROUTES } from './app-routing';
 import { FakeBackendProvider } from './core/interceptor/fake-backend-interceptor';
 
 import { AppComponent } from './app.component';
+import { BaseService } from './core/services/base.service';
+import { AuthService } from './core/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,11 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule
   ],
-  providers: [FakeBackendProvider],
+  providers: [
+    FakeBackendProvider,
+    AuthService,
+    BaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

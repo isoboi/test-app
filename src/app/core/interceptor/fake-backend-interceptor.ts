@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, dematerialize, materialize, mergeMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 // array in local storage for registered tasks
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -9,8 +10,11 @@ const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
+  constructor(private _router: Router) {}
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
+    const that = this;
 
     if (token) {
       request = request.clone({

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-task',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
 })
 export class TaskComponent {
 
-  constructor() { }
+  constructor(private _authService: AuthService) { }
+
+  logout() {
+    this._authService.logOut();
+  }
 }
