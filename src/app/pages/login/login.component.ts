@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { LoginService } from '../../core/services/login.service';
 import { finalize, takeUntil } from 'rxjs/operators';
 
 @Component({

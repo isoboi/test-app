@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../../core/services/task.service';
 import { Observable, Subject } from 'rxjs';
-import { ITask } from '../task.models';
+import { ITask } from '../../../core/interface/task.interface';
 
 @Component({
   selector: 'app-task-item',
