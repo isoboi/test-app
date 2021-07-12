@@ -10,16 +10,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    TaskComponent,
-    TaskListComponent,
-    TaskItemComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(TASK_ROUTES),
-    ReactiveFormsModule
-  ]
+    declarations: [
+        TaskComponent,
+        TaskListComponent,
+        TaskItemComponent
+    ],
+    exports: [
+        TaskComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(TASK_ROUTES),
+        ReactiveFormsModule
+    ]
 })
 export class TaskModule {
 }
