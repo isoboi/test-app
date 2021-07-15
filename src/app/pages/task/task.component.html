@@ -2,9 +2,9 @@
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex justify-content-between">
       <a routerLink="/tasks" class="navbar-brand d-flex align-items-center">
-        <strong>Tasks</strong>
+        <strong>{{'task.title' | translate}}</strong>
       </a>
-      <button class="btn btn-link" (click)="logout()">Выйти из системы</button>
+      <button class="btn btn-link" (click)="logout()">{{'task.logout' | translate}}</button>
     </div>
   </div>
 </header>

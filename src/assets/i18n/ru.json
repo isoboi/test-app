@@ -1,0 +1,29 @@
+{
+  "loading":"Загрузка...",
+  "login": {
+    "title": "Вход",
+    "login": "Логин",
+    "password": "Пароль",
+    "placeholder_email": "Введите логин",
+    "placeholder_password": "Введите пароль",
+    "error_message": "Вы ввели не правильный логин или пароль",
+    "sign_in": "Вход"
+  },
+  "task": {
+    "title": "Tasks",
+    "logout": "Выйти из системы"
+  },
+  "task-item": {
+    "title-edit": "Изменить",
+    "title-create": "Добавить",
+    "tasks": "задачу",
+    "name": "Название задачи",
+    "description": "Описание задачи",
+    "date": "Дата завершения",
+    "cancel": "Отмена"
+  },
+  "task-list": {
+    "list": "Список задач",
+    "create": "Добавить задачу"
+  }
+}

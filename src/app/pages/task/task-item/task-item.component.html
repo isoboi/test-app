@@ -1,32 +1,32 @@
 <ng-template #loader>
   <div class="d-flex justify-content-center align-items-center">
     <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
+      <span class="sr-only">{{'loading' | translate}}</span>
     </div>
   </div>
 </ng-template>
 
 <div class="add-task" *ngIf="!showLoader; else loader">
-  <h1 class="lead title">{{task ? 'Изменить' : 'Добавить'}} задачу</h1>
+  <h1 class="lead title">{{task ? ('task-item.title-edit' | translate ) : 'task-item.title-create' | translate }} {{'task-item.tasks' | translate}}</h1>
 
   <form class="mt-4" [formGroup]="form" (submit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Название задачи</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Название задачи">
+      <label for="name">{{'task-item.name' | translate }}</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="{{'task-item.name' | translate }}">
     </div>
 
     <div class="form-group">
-      <label for="desc">Описание задачи</label>
-      <input type="text" class="form-control" formControlName="description" id="desc" placeholder="Описание задачи">
+      <label for="desc">{{'task-item.description' | translate}}</label>
+      <input type="text" class="form-control" formControlName="description" id="desc" placeholder="{{'task-item.description' | translate}}">
     </div>
 
     <div class="form-group">
-      <label for="date">Дата завершения</label>
+      <label for="date">{{'task-item.date' | translate}}</label>
       <input type="date" class="form-control" formControlName="date" id="date">
     </div>
 
-    <button type="submit" class="btn btn-success mr-3" [disabled]="form.invalid">{{task ? 'Изменить' : 'Добавить'}}</button>
-    <button type="button" class="btn btn-warning" routerLink="/tasks">Отмена</button>
+    <button type="submit" class="btn btn-success mr-3" [disabled]="form.invalid">{{task ? ('task-item.title-edit' | translate) : 'task-item.title-create' | translate}}</button>
+    <button type="button" class="btn btn-warning" routerLink="/tasks">{{'task-item.cancel' | translate}}</button>
   </form>
 </div>
 

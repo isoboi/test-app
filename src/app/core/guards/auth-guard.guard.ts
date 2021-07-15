@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { apiUrl } from '../urlapi/url-api';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // navigate to login page
-    this.router.navigate([apiUrl.login()]);
+    this.router.navigate(['/login']);
     // you can save redirect url so after authing we can move them back to the page they requested
     return false;
   }

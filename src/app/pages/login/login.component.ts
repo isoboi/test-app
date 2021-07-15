@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginService } from '../../core/services/login.service';
 import { finalize, takeUntil } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder,
               private loginService: LoginService,
-              private router: Router) { }
+              private router: Router,
+              private translate: TranslateService) { }
 
   ngOnInit() {
     this._initForm();
