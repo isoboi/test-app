@@ -8,9 +8,9 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class TaskComponent {
 
-  constructor(private _authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   logout() {
-    this._authService.logOut();
+    this.authService.logOut();
   }
 }

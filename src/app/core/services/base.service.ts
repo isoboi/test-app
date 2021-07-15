@@ -5,11 +5,11 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class BaseService {
 
-  constructor(private _authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   handleError(error) {
     if (error.status === 401) {
-      this._authService.logOut();
+      this.authService.logOut();
     }
     return throwError(error.message);
   }

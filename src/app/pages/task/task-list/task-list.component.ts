@@ -12,14 +12,14 @@ export class TaskListComponent implements OnInit {
 
   tasks: Observable<ITask[]>;
 
-  constructor(private _taskService: TaskService) { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
     this._getTasks();
   }
 
   private _getTasks() {
-    this.tasks = this._taskService.getTasks();
+    this.tasks = this.taskService.getTasks();
   }
 
 }

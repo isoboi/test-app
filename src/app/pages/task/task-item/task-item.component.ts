@@ -19,10 +19,10 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   private urlParam: string;
   private destroy$ = new Subject();
 
-  constructor(private _fb: FormBuilder,
-              private _activatedRoute: ActivatedRoute,
-              private _taskService: TaskService,
-              private _router: Router) { }
+  constructor(private fb: FormBuilder,
+              private activatedRoute: ActivatedRoute,
+              private taskService: TaskService,
+              private router: Router) { }
 
   ngOnInit() {
     this._getRouteParam();
@@ -38,18 +38,18 @@ export class TaskItemComponent implements OnInit, OnDestroy {
 
     let subscription: Observable<any>;
     if (this.urlParam === 'new') {
-      subscription = this._taskService.createTask(this.form.value);
+      subscription = this.taskService.createTask(this.form.value);
     } else {
-      subscription = this._taskService.updateTask(this.form.value);
+      subscription = this.taskService.updateTask(this.form.value);
     }
 
     subscription
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this._router.navigate(['/tasks']));
+      .subscribe(() => this.router.navigate(['/tasks']));
   }
 
   private _getRouteParam() {
-    this.urlParam = this._activatedRoute.snapshot.params.id;
+    this.urlParam = this.activatedRoute.snapshot.params.id;
 
     if (this.urlParam === 'new') {
       this._initForm();
@@ -61,7 +61,7 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   private _initForm() {
     this.showLoader = false;
     const task = this.task;
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       id: (task && task.id) || this._getRandomId(),
       name: [(task && task.name) || '', Validators.required],
       description: (task && task.description) || '',
@@ -70,7 +70,7 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   }
 
   private _getTask(id) {
-    this._taskService.getTask(id)
+    this.taskService.getTask(id)
       .subscribe((res: ITask) => {
         this.task = res;
         this._initForm();

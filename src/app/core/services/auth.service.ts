@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { apiUrl } from '../urlapi/url-api';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private _router: Router) {}
+  constructor(private router: Router) {}
 
   isAuthenticated() {
-    return localStorage.getItem('token');
+    return localStorage.getItem(apiUrl.token());
   }
 
   logOut() {
-    localStorage.removeItem('token');
-    this._router.navigate(['/login']);
+    localStorage.removeItem(apiUrl.token());
+    this.router.navigate([apiUrl.login()]);
   }
 }

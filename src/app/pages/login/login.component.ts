@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject();
 
-  constructor(private _fb: FormBuilder,
-              private _loginService: LoginService,
-              private _router: Router) { }
+  constructor(private fb: FormBuilder,
+              private loginService: LoginService,
+              private router: Router) { }
 
   ngOnInit() {
     this._initForm();
@@ -35,20 +35,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.form.valid) {
       this.spinnerShow = true;
-      this._loginService.login(this.form.value)
+      this.loginService.login(this.form.value)
         .pipe(
           takeUntil(this.destroy$),
           finalize(() => this.spinnerShow = false)
         )
         .subscribe((res) => {
-          this._loginService.setUser(res);
-          this._router.navigate(['/tasks']);
+          this.loginService.setUser(res);
+          this.router.navigate(['/tasks']);
         }, () => this.error = true);
     }
   }
 
   private _initForm() {
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       login: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
